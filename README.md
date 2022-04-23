@@ -1,21 +1,23 @@
-# nvim-config
+# GEOVANE7881 - NVIM-CONFIG
+
 My Neovim Lua Configuration
 
-# Dependencies
+---
+## Dependencies
 
-## Git
+### Git
 
 ```
   sudo apt install git
 ```
 
-## Node, nvm, npm
+### Node, nvm, npm
 
 Install node globally with nvm
 
 [https://dxtright.com/index.php/2018/09/20/install-nvm-node-js-globally-linux-based-system/](https://dxtright.com/index.php/2018/09/20/install-nvm-node-js-globally-linux-based-system/)
 
-## Python utilities
+### Python utilities
 
 ```
 sudo apt install python3 python3-pip
@@ -24,9 +26,7 @@ sudo pip3 install pynvim
 pip3 install --user neovim
 ```
 
----
-
-## LiveGrep (for fuzzy finder like features)
+### LiveGrep (for fuzzy finder like features)
 
 
 ```
@@ -40,9 +40,10 @@ $ curl -LO https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgre
 $ sudo dpkg -i ripgrep_13.0.0_amd64.deb
 ```
 
+---
 # Install and Usage of Neovim 0.5 +
 
-## Install Paq
+### Install Paq
 
 [https://github.com/savq/paq-nvim](https://github.com/savq/paq-nvim)
 
@@ -51,7 +52,7 @@ git clone --depth=1 https://github.com/savq/paq-nvim.git \
     "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/paqs/start/paq-nvim
 ```
 
-## Clone this repository
+### Clone this repository
 
 ```
 mv ~/.config/nvim ~/.config/nvim_old
@@ -66,12 +67,13 @@ mv ~/.config/nvim ~/.config/nvim_old
 ~/.config/nvim/lua/settings.lua
 ```
 
-## Install Latets release of Neovim
+### Install Latest release of Neovim
 
 [https://github.com/neovim/neovim/releases](https://github.com/neovim/neovim/releases)
 
-## Open Neovim and install plugins and language servers
+### Open Neovim and install plugins and language servers
 
+```
 :PaqInstall
 :PaqSync
 
@@ -86,7 +88,9 @@ mv ~/.config/nvim ~/.config/nvim_old
 :TSInstall json
 :TSInstall html
 :TSInstall css
+```
 
+---
 ## Language servers and plugins maybe need extra configuration
 
 ### Telescope fzf
