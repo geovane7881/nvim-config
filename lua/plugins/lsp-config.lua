@@ -77,16 +77,6 @@ require'lspconfig'.html.setup{
 -- Java (exige java 11)
 -- require'lspconfig'.jdtls.setup{ cmd = { 'jdtls' } }
 
--- Angular
-local languageServerPath = "~/.nvm/versions/node/v14.15.0/lib/"
-local cmd = {"node", languageServerPath.."/node_modules/@angular/language-server/index.js", "--stdio", "--tsProbeLocations", languageServerPath, "--ngProbeLocations", languageServerPath}
-require'lspconfig'.angularls.setup{
-  cmd = cmd,
-  on_new_config = function(new_config,new_root_dir)
-    new_config.cmd = cmd
-  end,
-}
-
 -- Python
 require'lspconfig'.pyright.setup{}
 
@@ -111,6 +101,16 @@ require'lspconfig'.tsserver.setup({
     end,
 })
 
+
+-- Angular
+local languageServerPath = "~/.nvm/versions/node/v14.15.0/lib/"
+local cmd = {"node", languageServerPath.."/node_modules/@angular/language-server/index.js", "--stdio", "--tsProbeLocations", languageServerPath, "--ngProbeLocations", languageServerPath}
+require'lspconfig'.angularls.setup{
+  cmd = cmd,
+  on_new_config = function(new_config,new_root_dir)
+    new_config.cmd = cmd
+  end,
+}
 
 -- Project nvim
 -- require("project_nvim").setup {}

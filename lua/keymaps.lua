@@ -92,6 +92,10 @@ set("n", "<Leader>h", ":Telescope oldfiles<CR>", ns)
 set("n", "<Leader>cc", ":Commentary<CR>", ns)
 set("v", "<Leader>cc", ":Commentary<CR>", ns)
 
+-- Pretier
+set("n", "<Leader>f", ":ALEFix prettier<CR>", ns)
+
+
 -- Dashboard
 set("n", "<C-g>", ":DashboardFindWord<CR>", ns)
 set("n", "<Leader>ss", ":<C-u>SessionSave<CR>", ns)
