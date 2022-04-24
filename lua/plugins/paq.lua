@@ -44,6 +44,7 @@ require('paq') {
   'pbrisbin/vim-mkdir';
   'RRethy/vim-illuminate';
   'alvan/vim-closetag';
+  'dense-analysis/ale';
 
   -- Git
   'lewis6991/gitsigns.nvim';

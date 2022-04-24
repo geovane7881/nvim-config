@@ -18,7 +18,7 @@ opt.synmaxcol = 240
 -- Backup
 opt.wildignore="*.swp,*.bak,*.pyc,*.class"
 opt.autowrite=true
-opt.undodir="/home/geovane/.config/nvim/undodir"
+opt.undodir= os.getenv("HOME") .. "/.config/nvim/undodir"
 opt.undofile = true
 opt.undolevels=1000
 opt.undoreload=10000
@@ -119,6 +119,7 @@ opt.relativenumber = true
 --    autocmd BufEnter * silent! lcd %:p:h
 -- ]]
 
+
 cmd [[
 if has('nvim')
    au! TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
@@ -145,3 +146,15 @@ g.closetag_emptyTags_caseSensitive = 1
 g.closetag_shortcut = '>'
 g.closetag_close_shortcut = '<leader>>'
 
+-- Formatter
+-- Autoformat
+cmd [[ 
+  let g:ale_fixers = {
+  \   'javascript': ['prettier'],
+  \   'css': ['prettier'],
+  \}
+
+  let g:ale_linters_explicit = 1
+  let g:ale_fix_on_save = 1
+  let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all'
+]]

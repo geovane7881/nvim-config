@@ -93,6 +93,12 @@ mv ~/.config/nvim ~/.config/nvim_old
 ---
 ## Language servers and plugins maybe need extra configuration
 
+### Pretier, for coding formating
+
+```
+npm install -g --save-dev --save-exact prettier
+```
+
 ### Telescope fzf
 
 ```
@@ -125,7 +131,7 @@ npm install -g --save-dev typescript typescript-language-server diagnostic-langu
 - Angular
 
 ```jsx
-npm install -g @angular/language-server
+npm install -g --save-dev @angular/language-server
 ```
 
 ---
