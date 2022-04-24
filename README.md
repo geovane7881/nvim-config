@@ -13,7 +13,7 @@ My Neovim Lua Configuration
 
 ### Node, nvm, npm
 
-Install node globally with nvm
+Install node v14.15.0 (latest lts) globally with nvm
 
 [https://dxtright.com/index.php/2018/09/20/install-nvm-node-js-globally-linux-based-system/](https://dxtright.com/index.php/2018/09/20/install-nvm-node-js-globally-linux-based-system/)
 
