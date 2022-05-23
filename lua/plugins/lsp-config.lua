@@ -50,13 +50,13 @@ lsp_installer.on_server_ready(
 --      on_attach = my_custom_on_attach, */
 --  }) */
 
-require("null-ls").setup({
-    sources = {
-        require("null-ls").builtins.formatting.stylua,
-        require("null-ls").builtins.diagnostics.eslint,
-        -- require("null-ls").builtins.completion.spell,
-    },
-})
+-- require("null-ls").setup({
+--     sources = {
+--         require("null-ls").builtins.formatting.stylua,
+--         -- require("null-ls").builtins.diagnostics.eslint,
+--         -- require("null-ls").builtins.completion.spell,
+--     },
+-- })
 
 -- Signature
 require "lsp_signature".setup({
@@ -104,7 +104,7 @@ require'lspconfig'.tsserver.setup({
 
 -- Angular
 local languageServerPath = "~/.nvm/versions/node/v14.15.0/lib/"
-local cmd = {"node", languageServerPath.."/node_modules/@angular/language-server/index.js", "--stdio", "--tsProbeLocations", languageServerPath, "--ngProbeLocations", languageServerPath}
+local cmd = {"~/.nvm/versions/node/v14.15.0/bin/node", languageServerPath.."/node_modules/@angular/language-server/index.js", "--stdio", "--tsProbeLocations", languageServerPath, "--ngProbeLocations", languageServerPath}
 require'lspconfig'.angularls.setup{
   cmd = cmd,
   on_new_config = function(new_config,new_root_dir)
