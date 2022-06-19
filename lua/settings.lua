@@ -14,6 +14,26 @@ opt.hidden = true
 opt.history = 100
 opt.lazyredraw = true
 opt.synmaxcol = 240
+-- fix ident for comments
+cmd [[
+  set nosmartindent
+  filetype plugin indent on
+  set cindent
+  set cinkeys=0{,0},!^F,o,O,e " default is: 0{,0},0),:,0#,!^F,o,O,e
+  autocmd FileType * set cindent "some file types override it
+]]
+
+-- json
+-- cmd [[
+--   " Disable quote concealing in JSON files
+--   let g:vim_json_conceal=0
+-- ]]
+cmd [[
+  " Disable quote concealing in JSON files
+  set conceallevel=0
+  let g:vim_json_syntax_conceal = 0
+  let g:indentLine_concealcursor=""
+]]
 
 -- Backup
 opt.wildignore="*.swp,*.bak,*.pyc,*.class"
@@ -40,20 +60,25 @@ g.vscode_style = "dark"
 -- For light theme
 -- g.vscode_style = "light"
 cmd [[colorscheme vscode]]
+-- cmd [[colorscheme PaperColor]]
+
+
+ -- \       'override' : {
+ -- \		'color00' : ['#ffffff', '256'],
+ --  \       }
+ -- \     }
+
 
 -- cmd [[
 
--- set background=light
+-- set background=dark
 -- set t_Co=256   " This is may or may not needed.
 
 -- let g:PaperColor_Theme_Options = {
 --   \   'theme': {
---   \     'default.light': {
---   \ 	  'transparent_background': 0,
---   \       'override' : {
---  \		'color00' : ['#ffffff', '256'],
---   \       }
---   \     }
+--   \     'default.dark': {
+--   \ 	  'transparent_background': 1
+--   \     }                  
 --   \   }
 --   \ }
   
@@ -63,8 +88,6 @@ cmd [[colorscheme vscode]]
 -- :hi Comment	ctermfg=Cyan guifg=#80a0ff gui=bold
 -- " :hi MatchParen ctermfg=Cyan guifg=#80a0ff gui=bold
 -- " :hi MatchParen ctermfg=Cyan guifg=#80a0ff gui=bold
-
-
 
 -- ]]
 
@@ -80,7 +103,7 @@ opt.showmode = false
 opt.foldmethod = 'marker'
 opt.splitright = true
 opt.splitbelow = true
-opt.conceallevel = 0
+-- opt.conceallevel = 0
 opt.colorcolumn = '80'
 opt.cursorline = true
 opt.guicursor = 'a:blinkon1'
@@ -88,7 +111,7 @@ opt.scrolloff = 10
 opt.expandtab = true
 opt.shiftwidth = 2
 opt.tabstop = 2
-opt.smartindent = true
+-- opt.smartindent = true
 opt.list = false
 opt.listchars = { eol = '¬' }
 opt.shortmess:append {c = true}
@@ -164,6 +187,6 @@ cmd [[
   \}
 
   let g:ale_linters_explicit = 1
-  let g:ale_fix_on_save = 1
+  let g:ale_fix_on_save = 0
   let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all'
 ]]

@@ -78,8 +78,9 @@ set("v", "<C-V>", ':r !xclip -o -sel -c<CR>', ns)
 set("n", "<Leader>r", "q", ns)
 
 -- Nvim Tree
-set("n", "<M-n>", ":NvimTreeFindFileToggle<CR>", ns)
-set("n", "<C-n>", ":cd %:p:h<cr>:!pwd > ~/.last_dir<cr><cr>:NvimTreeFindFileToggle<CR>", ns)
+-- set("n", "<M-n>", ":NvimTreeFindFileToggle<CR>", ns)
+-- set("n", "<C-n>", ":cd %:p:h<cr>:!pwd > ~/.last_dir<cr><cr>:NvimTreeFindFileToggle<CR>", ns)
+set("n", "<C-n>", ":NvimTreeFindFileToggle<CR>", ns)
 set("n", "<M-b>", ":NvimTreeToggle<CR>", ns)
 
 -- Telescope
