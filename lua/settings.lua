@@ -18,10 +18,19 @@ opt.synmaxcol = 240
 -- Backup
 opt.wildignore="*.swp,*.bak,*.pyc,*.class"
 opt.autowrite=true
+opt.backup=true
 opt.undodir= os.getenv("HOME") .. "/.config/nvim/undodir"
+opt.backupdir=os.getenv("HOME") .. "/.config/nvim/backup"
 opt.undofile = true
 opt.undolevels=1000
 opt.undoreload=10000
+opt.writebackup=true
+opt.backupcopy="yes"
+
+cmd [[
+  au BufWritePre * let &bex = '@' . strftime("%F.%H:%M")
+]]
+
 
 -- Theme
 opt.termguicolors = true

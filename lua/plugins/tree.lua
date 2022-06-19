@@ -5,7 +5,7 @@ g.nvim_tree_respect_buf_cwd = 1
 
 require('nvim-tree').setup{
   -- auto_close = true,
-  update_cwd = true,
+  -- update_cwd = true,
   -- update_to_buf_dir   = {
   --   enable = true,
   --   auto_open = true

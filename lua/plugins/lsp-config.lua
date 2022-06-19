@@ -103,7 +103,7 @@ require'lspconfig'.tsserver.setup({
 
 
 -- Angular
-local languageServerPath = "~/.nvm/versions/node/v14.15.0/lib/"
+local languageServerPath = "~/.nvm/versions/node/v14.19.0/lib/"
 local cmd = {"node", languageServerPath.."/node_modules/@angular/language-server/index.js", "--stdio", "--tsProbeLocations", languageServerPath, "--ngProbeLocations", languageServerPath}
 require'lspconfig'.angularls.setup{
   cmd = cmd,
