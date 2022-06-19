@@ -106,8 +106,10 @@ require'lspconfig'.tsserver.setup({
 -- local languageServerPath = "~/.nvm/versions/node/v14.19.0/lib/"
 -- local cmd = {"node", languageServerPath.."/node_modules/@angular/language-server/index.js", "--stdio", "--tsProbeLocations", languageServerPath, "--ngProbeLocations", languageServerPath}
 
-local languageServerPath = "~/.nvm/versions/node/v14.15.0/lib/"
-local cmd = {"~/.nvm/versions/node/v14.15.0/bin/node", languageServerPath.."/node_modules/@angular/language-server/index.js", "--stdio", "--tsProbeLocations", languageServerPath, "--ngProbeLocations", languageServerPath}
+-- v14.19.0 (casa)
+-- v14.15.0 (trabalho)
+local languageServerPath = "~/.nvm/versions/node/v14.19.0/lib/"
+local cmd = {"~/.nvm/versions/node/v14.19.0/bin/node", languageServerPath.."/node_modules/@angular/language-server/index.js", "--stdio", "--tsProbeLocations", languageServerPath, "--ngProbeLocations", languageServerPath}
 require'lspconfig'.angularls.setup{
   cmd = cmd,
   on_new_config = function(new_config,new_root_dir)
