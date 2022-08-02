@@ -86,7 +86,7 @@ set("n", "<M-b>", ":NvimTreeToggle<CR>", ns)
 -- Telescope
 set("n", "<C-p>", ":Telescope find_files<CR>", ns)
 set("n", "<C-h>", ":Telescope live_grep<CR>", ns)
-set("n", "<C-b>", ":Telescope buffers<CR>", ns)
+-- set("n", "<C-b>", ":Telescope buffers<CR>", ns)
 set("n", "<Leader>h", ":Telescope oldfiles<CR>", ns)
 
 -- Commentary

@@ -14,7 +14,7 @@ opt.hidden = true
 opt.history = 100
 opt.lazyredraw = true
 opt.synmaxcol = 240
--- fix ident for comments
+-- Fix ident for comments
 cmd [[
   set nosmartindent
   filetype plugin indent on
@@ -23,14 +23,11 @@ cmd [[
   autocmd FileType * set cindent "some file types override it
 ]]
 
--- json
--- cmd [[
---   " Disable quote concealing in JSON files
---   let g:vim_json_conceal=0
--- ]]
+-- Json editing fixes
 cmd [[
   " Disable quote concealing in JSON files
-  set conceallevel=0
+  "set conceallevel=0
+  let g:conceallevel = 0
   let g:vim_json_syntax_conceal = 0
   let g:indentLine_concealcursor=""
 ]]
@@ -54,23 +51,27 @@ cmd [[
 
 -- Theme
 opt.termguicolors = true
+
+-- Catppuccin
+-- default
+vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
+-- vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+-- vim.cmd [[colorscheme catppuccin]]
+
+-- Dracula
 -- cmd [[colorscheme dracula]]
+
+-- VsCode
 -- For dark theme
 g.vscode_style = "dark"
 -- For light theme
 -- g.vscode_style = "light"
 cmd [[colorscheme vscode]]
+
+-- PaperColor
 -- cmd [[colorscheme PaperColor]]
-
-
- -- \       'override' : {
- -- \		'color00' : ['#ffffff', '256'],
- --  \       }
- -- \     }
-
-
+-- Fixes 
 -- cmd [[
-
 -- set background=dark
 -- set t_Co=256   " This is may or may not needed.
 
@@ -81,17 +82,12 @@ cmd [[colorscheme vscode]]
 --   \     }                  
 --   \   }
 --   \ }
-  
-
 --  colorscheme PaperColor
-
+-- " highlight de cursor
 -- :hi Comment	ctermfg=Cyan guifg=#80a0ff gui=bold
 -- " :hi MatchParen ctermfg=Cyan guifg=#80a0ff gui=bold
 -- " :hi MatchParen ctermfg=Cyan guifg=#80a0ff gui=bold
-
 -- ]]
-
-
 
 
 -- Editor
@@ -169,16 +165,11 @@ g.closetag_xhtml_filenames = '*.xhtml,*.jsx'
 g.closetag_filetypes = 'html,xhtml,phtml'
 g.closetag_xhtml_filetypes = 'xhtml,jsx'
 g.closetag_emptyTags_caseSensitive = 1
--- g.closetag_regions:append {
---   ['typescript.tsx'] = 'jsxRegion,tsxRegion',
---   ['javascript.jsx'] = 'jsxRegion',
---   ['typescriptreact'] = 'jsxRegion,tsxRegion',
---   ['javascriptreact'] = 'jsxRegion',
--- }
 g.closetag_shortcut = '>'
 g.closetag_close_shortcut = '<leader>>'
 
 -- Formatter
+
 -- Autoformat
 cmd [[ 
   let g:ale_fixers = {
@@ -189,4 +180,45 @@ cmd [[
   let g:ale_linters_explicit = 1
   let g:ale_fix_on_save = 0
   let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all'
+]]
+
+-- statusline
+-- cmd [[ 
+--   set statusline=" "
+--   set laststatus=0
+--   set noruler
+-- ]]
+
+--tabline
+-- cmd [[
+--   " autocmd BufEnter * let &titlestring = expand("%:@")
+--   " autocmd BufEnter * let &titlestring = expand("%:p:h")
+--   autocmd BufEnter * let &titlestring = expand("%:t")
+--   set title
+--   set guitablabel=%t
+--   set tabline=%t
+
+-- ]]
+
+-- gui options
+cmd [[
+  set guicursor=a:hor20
+  set guifont=Iosevka\ Custom:h20
+
+  let g:terminal_color_0 = '#001930'
+  let g:terminal_color_1 = '#094B92'
+  let g:terminal_color_2 = '#BD4455'
+  let g:terminal_color_3 = '#073986'
+  let g:terminal_color_4 = '#8A3254'
+  let g:terminal_color_5 = '#A53756'
+  let g:terminal_color_6 = '#235D9F'
+  let g:terminal_color_7 = '#9ca5c8'
+  let g:terminal_color_8 = '#6d738c'
+  let g:terminal_color_9 = '#094B92'
+  let g:terminal_color_10 = '#BD4455'
+  let g:terminal_color_11 = '#073986'
+  let g:terminal_color_12 = '#8A3254'
+  let g:terminal_color_13 = '#A53756'
+  let g:terminal_color_14 = '#235D9F'
+  let g:terminal_color_15 = '#235D9F'
 ]]

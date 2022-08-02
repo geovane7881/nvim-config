@@ -3,7 +3,8 @@ require 'keymaps'
 
 -- Plugins
 require 'plugins.paq'
-require 'plugins.feline'
+require 'plugins.impatient'
+require 'plugins.lualine'
 require 'plugins.bufferline'
 require 'plugins.tree'
 require 'plugins.telescope'

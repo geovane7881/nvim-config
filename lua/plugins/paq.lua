@@ -1,6 +1,8 @@
 require('paq') {
   'savq/paq-nvim';
   'nvim-lua/plenary.nvim';
+  -- performace on startup
+  'lewis6991/impatient.nvim';
 
   -- Telescope
   'nvim-telescope/telescope.nvim';
@@ -10,14 +12,23 @@ require('paq') {
   'glepnir/dashboard-nvim';
   'dracula/vim';
   'TaDaa/vimade';
-  'famiu/feline.nvim';
-  'kyazdani42/nvim-web-devicons';
-  'kyazdani42/nvim-tree.lua';
+  -- 'famiu/feline.nvim';
+  'nvim-lualine/lualine.nvim';
   'akinsho/bufferline.nvim';
   'Yggdroot/indentLine';
   'nvim-treesitter/nvim-treesitter';
+
+  -- File Browser
+  'kyazdani42/nvim-web-devicons';
+  'kyazdani42/nvim-tree.lua';
+
+  -- Colorschemes
   'Mofiqul/vscode.nvim';
   'NLKNguyen/papercolor-theme';
+  'catppuccin/nvim';
+  'lunarvim/onedarker.nvim';
+  'folke/tokyonight.nvim';
+  'shaunsingh/moonlight.nvim';
 
   -- LSP
   'neovim/nvim-lspconfig';
@@ -63,7 +74,7 @@ require('paq') {
   'kassio/neoterm';
 
   -- Project
-  -- 'ahmedkhalf/project.nvim';
+  'ahmedkhalf/project.nvim';
 
 }
 

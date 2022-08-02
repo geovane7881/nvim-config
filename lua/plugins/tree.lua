@@ -1,7 +1,7 @@
 local g = vim.g
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 
-g.nvim_tree_respect_buf_cwd = 1
+-- g.nvim_tree_respect_buf_cwd = 1
 
 require('nvim-tree').setup{
   -- auto_close = true,
@@ -10,12 +10,14 @@ require('nvim-tree').setup{
   --   enable = true,
   --   auto_open = true
   -- },
-  -- update_focused_file = {
-  --   enable      = true,
-  --   update_cwd  = true,
-  -- },
+  respect_buf_cwd = true,
+  update_cwd = true,
+  update_focused_file = {
+    enable = true,
+    update_cwd = true
+  },
   filters = {
-    dotfiles = true,
+    dotfiles = false,
     custom = {}
   },
   view = {
