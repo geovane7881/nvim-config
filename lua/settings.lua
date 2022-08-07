@@ -154,10 +154,12 @@ if has('nvim')
 endif]]
 
 -- Neoterm
-g.neoterm_default_mod = 'vertical'
+g.neoterm_default_mod = 'rightbelow'
 g.neoterm_autoinsert = true
 g.neoterm_autoscroll = true
 g.neoterm_term_per_tab = true
+g.neoterm_size = 10
+g.neoterm_fixedsize = 1
 
 -- CloseTags
 g.closetag_filenames = '*.html,*.xhtml,*.phtml'
@@ -203,7 +205,7 @@ cmd [[
 -- gui options
 cmd [[
   set guicursor=a:hor20
-  set guifont=Iosevka\ Custom:h20
+  set guifont=Iosevka\ Custom:h16
 
   let g:terminal_color_0 = '#001930'
   let g:terminal_color_1 = '#094B92'
