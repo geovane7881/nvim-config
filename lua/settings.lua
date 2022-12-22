@@ -3,7 +3,7 @@ local opt = vim.opt
 local cmd = vim.cmd
 
 -- Leader
-g.mapleader = ','
+g.mapleader = ' '
 
 -- General
 opt.compatible = false
@@ -14,40 +14,6 @@ opt.hidden = true
 opt.history = 100
 opt.lazyredraw = true
 opt.synmaxcol = 240
--- Fix ident for comments
-cmd [[
-  set nosmartindent
-  filetype plugin indent on
-  set cindent
-  set cinkeys=0{,0},!^F,o,O,e " default is: 0{,0},0),:,0#,!^F,o,O,e
-  autocmd FileType * set cindent "some file types override it
-]]
-
--- Json editing fixes
-cmd [[
-  " Disable quote concealing in JSON files
-  "set conceallevel=0
-  let g:conceallevel = 0
-  let g:vim_json_syntax_conceal = 0
-  let g:indentLine_concealcursor=""
-]]
-
--- Backup
-opt.wildignore="*.swp,*.bak,*.pyc,*.class"
-opt.autowrite=true
-opt.backup=true
-opt.undodir= os.getenv("HOME") .. "/.config/nvim/undodir"
-opt.backupdir=os.getenv("HOME") .. "/.config/nvim/backup"
-opt.undofile = true
-opt.undolevels=1000
-opt.undoreload=10000
-opt.writebackup=true
-opt.backupcopy="yes"
-
-cmd [[
-  au BufWritePre * let &bex = '@' . strftime("%F.%H:%M")
-]]
-
 
 -- Theme
 opt.termguicolors = true
@@ -63,10 +29,10 @@ vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
 
 -- VsCode
 -- For dark theme
-g.vscode_style = "dark"
+-- g.vscode_style = "dark"
 -- For light theme
--- g.vscode_style = "light"
 cmd [[colorscheme vscode]]
+-- g.vscode_style = "light"
 
 -- PaperColor
 -- cmd [[colorscheme PaperColor]]
@@ -101,7 +67,7 @@ opt.splitright = true
 opt.splitbelow = true
 -- opt.conceallevel = 0
 opt.colorcolumn = '80'
-opt.cursorline = true
+opt.cursorline = false
 opt.guicursor = 'a:blinkon1'
 opt.scrolloff = 10
 opt.expandtab = true
@@ -153,6 +119,42 @@ if has('nvim')
    au! TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
 endif]]
 
+-- Fix ident for comments
+cmd [[
+  set nosmartindent
+  filetype plugin indent on
+  set cindent
+  set cinkeys=0{,0},!^F,o,O,e " default is: 0{,0},0),:,0#,!^F,o,O,e
+  autocmd FileType * set cindent "some file types override it
+]]
+
+-- Json editing fixes
+cmd [[
+  " Disable quote concealing in JSON files
+  "set conceallevel=0
+  let g:conceallevel = 0
+  let g:vim_json_syntax_conceal = 0
+  let g:indentLine_concealcursor=""
+]]
+
+-- Backup
+opt.wildignore="*.swp,*.bak,*.pyc,*.class"
+opt.autowrite=true
+opt.backup=true
+opt.undodir= os.getenv("HOME") .. "/.config/nvim/undodir"
+opt.backupdir=os.getenv("HOME") .. "/.config/nvim/backup"
+opt.undofile = true
+opt.undolevels=1000
+opt.undoreload=10000
+opt.writebackup=true
+opt.backupcopy="yes"
+
+cmd [[
+  au BufWritePre * let &bex = '@' . strftime("%F.%H:%M")
+]]
+
+
+
 -- Neoterm
 g.neoterm_default_mod = 'rightbelow'
 g.neoterm_autoinsert = true
@@ -203,24 +205,46 @@ cmd [[
 -- ]]
 
 -- gui options
-cmd [[
-  set guicursor=a:hor20
-  set guifont=Iosevka\ Custom:h16
+-- cmd [[
+--   set guicursor=a:hor20
+--   set guifont=Iosevka\ Custom:h16
 
-  let g:terminal_color_0 = '#001930'
-  let g:terminal_color_1 = '#094B92'
-  let g:terminal_color_2 = '#BD4455'
-  let g:terminal_color_3 = '#073986'
-  let g:terminal_color_4 = '#8A3254'
-  let g:terminal_color_5 = '#A53756'
-  let g:terminal_color_6 = '#235D9F'
-  let g:terminal_color_7 = '#9ca5c8'
-  let g:terminal_color_8 = '#6d738c'
-  let g:terminal_color_9 = '#094B92'
-  let g:terminal_color_10 = '#BD4455'
-  let g:terminal_color_11 = '#073986'
-  let g:terminal_color_12 = '#8A3254'
-  let g:terminal_color_13 = '#A53756'
-  let g:terminal_color_14 = '#235D9F'
-  let g:terminal_color_15 = '#235D9F'
-]]
+--   let g:terminal_color_0 = '#001930'
+--   let g:terminal_color_1 = '#094B92'
+--   let g:terminal_color_2 = '#BD4455'
+--   let g:terminal_color_3 = '#073986'
+--   let g:terminal_color_4 = '#8A3254'
+--   let g:terminal_color_5 = '#A53756'
+--   let g:terminal_color_6 = '#235D9F'
+--   let g:terminal_color_7 = '#9ca5c8'
+--   let g:terminal_color_8 = '#6d738c'
+--   let g:terminal_color_9 = '#094B92'
+--   let g:terminal_color_10 = '#BD4455'
+--   let g:terminal_color_11 = '#073986'
+--   let g:terminal_color_12 = '#8A3254'
+--   let g:terminal_color_13 = '#A53756'
+--   let g:terminal_color_14 = '#235D9F'
+--   let g:terminal_color_15 = '#235D9F'
+-- ]]
+
+
+-- cmd [[
+--   let g:rainbow#max_level = 16
+--   let g:rainbow#pairs = [['(', ')'], ['[', ']']]
+-- ]]
+--
+
+
+---------------------------------
+-- Mensagem flutuante
+---------------------------------
+vim.diagnostic.config({
+  float = { source = "always", border = border },
+  virtual_text = false,
+  signs = true,
+})
+
+---------------------------------
+-- Auto commands
+---------------------------------
+vim.cmd([[ autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])

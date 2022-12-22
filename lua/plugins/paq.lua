@@ -9,6 +9,7 @@ require('paq') {
   'nvim-telescope/telescope-fzf-native.nvim';
 
   -- Visual
+  'p00f/nvim-ts-rainbow';
   'glepnir/dashboard-nvim';
   'dracula/vim';
   'TaDaa/vimade';
@@ -35,6 +36,7 @@ require('paq') {
   'jose-elias-alvarez/null-ls.nvim';
   'jose-elias-alvarez/nvim-lsp-ts-utils';
   'williamboman/nvim-lsp-installer';
+  'MunifTanjim/eslint.nvim';
   'hrsh7th/nvim-cmp';
   'hrsh7th/cmp-nvim-lsp';
   'hrsh7th/cmp-path';

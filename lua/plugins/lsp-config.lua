@@ -1,6 +1,6 @@
-local capabilities = require'cmp_nvim_lsp'.update_capabilities(
-  vim.lsp.protocol.make_client_capabilities()
-)
+-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local ns = { noremap = true, silent = true }
@@ -12,19 +12,21 @@ local on_attach = function(_, bufnr)
   buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', ns)
   buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', ns)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', ns)
+  buf_set_keymap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', ns)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', ns)
   buf_set_keymap('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', ns)
-  buf_set_keymap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>', ns)
+  buf_set_keymap('n', '<Leader>h', '<cmd>lua vim.diagnostic.open_float()<cr>', ns)
+  buf_set_keymap('n', '<Leader>H', '<cmd>lua vim.lsp.buf.signature_help()<CR>', ns)
   buf_set_keymap('n', 'H', '<cmd>lua vim.lsp.buf.hover()<CR>', ns)
-  buf_set_keymap('n', '<space>h', '<cmd>lua vim.lsp.buf.signature_help()<CR>', ns)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', ns)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', ns)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', ns)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', ns)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', ns)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', ns)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', ns)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', ns)
+  buf_set_keymap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>', ns)
+  buf_set_keymap('n', '<Leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', ns)
+  buf_set_keymap('n', '<Leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', ns)
+  buf_set_keymap('n', '<Leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', ns)
+  buf_set_keymap('n', '<Leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', ns)
+  buf_set_keymap('n', '<Leader>q', '<cmd>lua vim.diagnostic.set_loclist()<CR>', ns)
+  buf_set_keymap('n', '<Leader>.', '<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>', ns)
+  buf_set_keymap('n', '<Leader>k', '<cmd>lua vim.diagnostic.goto_prev()<CR>', ns)
+  buf_set_keymap('n', '<Leader>j', '<cmd>lua vim.diagnostic.goto_next()<CR>', ns)
 end
 
 local lsp_installer = require("nvim-lsp-installer")
@@ -38,25 +40,6 @@ lsp_installer.on_server_ready(
     vim.cmd [[ do User LspAttachBuffers ]]
   end
 )
-
---  -- NUll ls */
---  require("null-ls").config({ */
---      sources = { */
---          require("null-ls").builtins.formatting.stylua, */
---          require("null-ls").builtins.completion.spell, */
---      }, */
---  }) */
---  require("lspconfig")["null-ls"].setup({ */
---      on_attach = my_custom_on_attach, */
---  }) */
-
--- require("null-ls").setup({
---     sources = {
---         require("null-ls").builtins.formatting.stylua,
---         -- require("null-ls").builtins.diagnostics.eslint,
---         -- require("null-ls").builtins.completion.spell,
---     },
--- })
 
 -- Signature
 require "lsp_signature".setup({
@@ -108,8 +91,8 @@ require'lspconfig'.tsserver.setup({
 
 -- v14.19.0 (casa)
 -- v14.15.0 (trabalho)
-local languageServerPath = "~/.nvm/versions/node/v14.19.0/lib/"
-local cmd = {"~/.nvm/versions/node/v14.19.0/bin/node", languageServerPath.."/node_modules/@angular/language-server/index.js", "--stdio", "--tsProbeLocations", languageServerPath, "--ngProbeLocations", languageServerPath}
+local languageServerPath = "~/.nvm/versions/node/v14.21.1/lib/"
+local cmd = {"~/.nvm/versions/node/v14.21.1/bin/node", languageServerPath.."/node_modules/@angular/language-server/index.js", "--stdio", "--tsProbeLocations", languageServerPath, "--ngProbeLocations", languageServerPath}
 require'lspconfig'.angularls.setup{
   cmd = cmd,
   on_new_config = function(new_config,new_root_dir)
@@ -118,4 +101,44 @@ require'lspconfig'.angularls.setup{
 }
 
 -- Project nvim
--- require("project_nvim").setup {}
+require("project_nvim").setup {}
+
+-- Quick lint js
+-- require('lspconfig/quick_lint_js').setup {}
+-- require'lspconfig'.quick_lint_js.setup {
+--   lsp = {
+--     on_attach = on_attach,
+--     capabilities = capabilities
+--   },
+-- }
+
+local null_ls = require("null-ls")
+null_ls.setup({
+    sources = {
+        null_ls.builtins.diagnostics.eslint, -- eslint or eslint_d
+        null_ls.builtins.code_actions.eslint, -- eslint or eslint_d
+        null_ls.builtins.formatting.prettier, -- prettier, eslint, eslint_d, or prettierd
+        null_ls.builtins.completion.spell,
+    }
+})
+
+local eslint = require("eslint")
+eslint.setup({
+  bin = 'eslint', -- or `eslint_d`
+  code_actions = {
+    enable = true,
+    apply_on_save = {
+      enable = true,
+      types = { "directive", "problem", "suggestion", "layout" },
+    },
+    disable_rule_comment = {
+      enable = true,
+      location = "separate_line", -- or `same_line`
+    },
+  },
+  diagnostics = {
+    enable = true,
+    report_unused_disable_directives = false,
+    run_on = "type", -- or `save`
+  },
+})

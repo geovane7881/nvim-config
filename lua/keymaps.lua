@@ -1,9 +1,6 @@
 local set = vim.api.nvim_set_keymap
 local ns = { noremap = true, silent = true }
 
--- Command
--- set("n", ";", ":", { noremap = true })
-
 -- Config
 set("n", "<Leader>e", ":e! ~/.config/nvim/init.lua<cr>", ns)
 
@@ -16,6 +13,7 @@ set("n", "<Leader>C", ":pwd<cr>", ns)
 set("n", "<Leader>cp", ":let @+=expand(\"%:p\")<CR>", ns)
 
 -- Clean Search
+-- util quando a opção hlsearch está ativa
 set("n", "<Leader>d", ":let @/=''<CR>", ns)
 
 -- Window
@@ -43,15 +41,17 @@ set("n", "j", "gj", ns)
 set("n", "k", "gk", ns)
 
 -- start and end of line
-set("n", "<c-h>", "^", ns)
-set("n", "<c-l>", "g_", ns)
-set("v", "<c-h>", "^", ns)
-set("v", "<c-l>", "g_", ns)
-set("i", "<c-h>", "<Esc>^i", ns)
-set("i", "<c-l>", "<Esc>g_a", ns)
+set("n", "<Leader>h", "^", ns)
+set("n", "<Leader>l", "g_", ns)
+set("v", "<Leader>h", "^", ns)
+set("v", "<Leader>l", "g_", ns)
+set("i", "<Leader>h", "<Esc>^i", ns)
+set("i", "<Leader>l", "<Esc>g_a", ns)
 -- paragraphs
-set("n", "<c-j>", "}}kg_", ns)
-set("n", "<c-k>", "{kg_", ns)
+-- set("n", "<Leader>j", "}}kg_", ns)
+-- set("n", "<Leader>k", "{kg_", ns)
+-- set("v", "<Leader>j", "}}kg_", ns)
+-- set("v", "<Leader>k", "{kg_", ns)
 
 -- Buffers
 set("n", "J", ":BufferLineCycleNext<CR>", ns)
@@ -69,25 +69,37 @@ set("n", "?", ".", ns)
 set("n", ".", ";", ns)
 
 -- Copy and paste
-set("v", "<Leader>c", ':%w !xclip -i -sel c<CR>', ns)
-set("v", "<Leader>x", ':%w !xclip -i -sel c<CR>"+C', ns)
 set("v", "<C-V>", ':r !xclip -o -sel -c<CR>', ns)
--- set("n", "<C-V>", ':r !xclip -o -sel -c<CR>', ns)
+set("n", "<C-x>", '"*yydd', ns)
+set("v", "<C-x>", '"+ygvd', ns)
+-- não mover conteudo apagado para área de transferencia
+set("n", "x", '"_x', ns)
+set("v", "x", '"_x', ns)
+set("n", "X", '"_X', ns)
+set("v", "X", '"_X', ns)
+set("n", "d", '"_d', ns)
+set("v", "d", '"_d', ns)
+set("n", "D", '"_D', ns)
+set("v", "D", '"_D', ns)
+set("n", "c", '"_c', ns)
+set("v", "c", '"_c', ns)
+set("n", "C", '"_C', ns)
+set("v", "C", '"_C', ns)
+-- set("n", "p", 'pgvy', ns)
+set("v", "p", 'pgvy', ns)
 
 -- Macro
 set("n", "<Leader>r", "q", ns)
 
--- Nvim Tree
--- set("n", "<M-n>", ":NvimTreeFindFileToggle<CR>", ns)
--- set("n", "<C-n>", ":cd %:p:h<cr>:!pwd > ~/.last_dir<cr><cr>:NvimTreeFindFileToggle<CR>", ns)
+-- Nvim Tree/
 set("n", "<C-n>", ":NvimTreeFindFileToggle<CR>", ns)
 set("n", "<M-b>", ":NvimTreeToggle<CR>", ns)
 
 -- Telescope
 set("n", "<C-p>", ":Telescope find_files<CR>", ns)
-set("n", "<C-h>", ":Telescope live_grep<CR>", ns)
--- set("n", "<C-b>", ":Telescope buffers<CR>", ns)
-set("n", "<Leader>h", ":Telescope oldfiles<CR>", ns)
+set("n", "<C-g>", ":Telescope live_grep<CR>", ns)
+set("n", "<C-b>", ":Telescope buffers<CR>", ns)
+set("n", "<C-h>", ":Telescope oldfiles<CR>", ns)
 
 -- Commentary
 set("n", "<Leader>cc", ":Commentary<CR>", ns)
@@ -98,14 +110,9 @@ set("n", "<Leader>f", ":ALEFix prettier<CR>", ns)
 
 
 -- Dashboard
-set("n", "<C-g>", ":DashboardFindWord<CR>", ns)
+set("n", "<Leader>n", ":DashboardNewFile<CR>", ns)
 set("n", "<Leader>ss", ":<C-u>SessionSave<CR>", ns)
-set("n", "<Leader>sl", ":<C-u>SessionLoad<CR>", ns)
-set("n", "<Leader>fh", ":DashboardFindHistory<CR>", ns)
-set("n", "<Leader>ff", ":DashboardFindFile<CR>", ns)
-set("n", "<Leader>tc", ":DashboardChangeColorscheme<CR>", ns)
-set("n", "<Leader>fb", ":DashboardJumpMark<CR>", ns)
-set("n", "<Leader>cn", ":DashboardNewFile<CR>", ns)
+set("n", "<C-j>", ":<C-u>SessionLoad<CR>", ns)
 
 -- Terminal
 
