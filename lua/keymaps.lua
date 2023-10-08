@@ -5,7 +5,8 @@ local ns = { noremap = true, silent = true }
 set("n", "<Leader>e", ":e! ~/.config/nvim/init.lua<cr>", ns)
 
 -- Terminal
-set("t", "<Esc>", "<C-\\><C-n><C-w><C-w>", ns)
+-- set("t", "<Esc>", "<C-\\><C-n><C-w><C-w>", ns)
+set("i", "<Esc>", "<C-c>", ns)
 
 -- Directory
 set("n", "<Leader>cd", ":cd %:p:h<cr>:!pwd > ~/.last_dir<cr><cr>", ns)
@@ -17,52 +18,55 @@ set("n", "<Leader>cp", ":let @+=expand(\"%:p\")<CR>", ns)
 set("n", "<Leader>d", ":let @/=''<CR>", ns)
 
 -- Window
-set("n", "<up>", ":resize +4<CR>", ns)
-set("n", "<down>", ":resize -4<CR>", ns)
-set("n", "<right>", ":vertical resize +4<CR>", ns)
-set("n", "<left>", ":vertical resize -4<CR>", ns)
+set("n", "<M-up>", ":resize -4<CR>", ns)
+set("n", "<M-down>", ":resize +4<CR>", ns)
+set("n", "<M-left>", ":vertical resize +4<CR>", ns)
+set("n", "<M-right>", ":vertical resize -4<CR>", ns)
 
 set("n", "<Leader>s", ":<C-u>split<CR>", ns)
 set("n", "<Leader>v", ":<C-u>vsplit<CR>", ns)
 
-set("n", "<M-h>", "<C-w>h", ns)
-set("n", "<M-j>", "<C-w>j", ns)
-set("n", "<M-k>", "<C-w>k", ns)
-set("n", "<M-l>", "<C-w>l", ns)
+-- Move beetween windows
+-- set("n", "<M-h>", "<C-w>h", ns)
+-- set("n", "<M-j>", "<C-w>j", ns)
+-- set("n", "<M-k>", "<C-w>k", ns)
+-- set("n", "<M-l>", "<C-w>l", ns)
 
-
-set("n", "<M-S-h>", "<C-w>H", ns)
-set("n", "<M-S-j>", "<C-w>J", ns)
-set("n", "<M-S-k>", "<C-w>K", ns)
-set("n", "<M-S-l>", "<C-w>L", ns)
+-- nao funciona
+-- set("n", "<C-S-H>", "<C-w>H", ns)
+-- set("n", "<C-S-J>", "<C-w>J", ns)
+-- set("n", "<C-S-K>", "<C-w>K", ns)
+-- set("n", "<C-S-L>", "<C-w>L", ns)
 
 -- Moving
 set("n", "j", "gj", ns)
 set("n", "k", "gk", ns)
 
 -- start and end of line
-set("n", "<Leader>h", "^", ns)
-set("n", "<Leader>l", "g_", ns)
-set("v", "<Leader>h", "^", ns)
-set("v", "<Leader>l", "g_", ns)
-set("i", "<Leader>h", "<Esc>^i", ns)
-set("i", "<Leader>l", "<Esc>g_a", ns)
+set("n", "<M-h>", "^", ns)
+set("v", "<M-h>", "^", ns)
+set("i", "<M-h>", "<Esc>^i", ns)
+set("n", "<M-l>", "g_", ns)
+set("v", "<M-l>", "g_", ns)
+set("i", "<M-l>", "<Esc>g_a", ns)
 -- paragraphs
--- set("n", "<Leader>j", "}}kg_", ns)
--- set("n", "<Leader>k", "{kg_", ns)
--- set("v", "<Leader>j", "}}kg_", ns)
--- set("v", "<Leader>k", "{kg_", ns)
+set("n", "<M-j>", "}}kg_", ns)
+set("v", "<M-j>", "}}kg_", ns)
+set("n", "<M-k>", "{kg_", ns)
+set("v", "<M-k>", "{kg_", ns)
 
 -- Buffers
 set("n", "J", ":BufferLineCycleNext<CR>", ns)
 set("n", "K", ":BufferLineCyclePrev<CR>", ns)
 set("n", "Q", ":bd!<CR>", ns)
-set("n", "<C-t>", ":tabnew<CR>", ns)
+-- set("n", "<C-t>", ":tabnew<CR>", ns)
 set("n", "<Leader>x", "<esc>:w <bar> %bd <bar> e#<CR>", ns)
 
 -- Save
-set("n", "<C-s>", ":w<CR>", ns)
-set("i", "<C-s>", "<Esc>:w<CR>a", ns)
+set("n", "<C-s>", ":w<CR><Esc>", ns)
+-- set("i", "<C-s>", "<Esc>:w<CR>a", ns)
+set("i", "<C-s>", "<Esc>:w<CR><Esc>", ns)
+set("n", "<Leader>s", ":w<CR>", ns)
 
 -- Repeat Search
 set("n", "?", ".", ns)
@@ -96,23 +100,23 @@ set("n", "<C-n>", ":NvimTreeFindFileToggle<CR>", ns)
 set("n", "<M-b>", ":NvimTreeToggle<CR>", ns)
 
 -- Telescope
-set("n", "<C-p>", ":Telescope find_files<CR>", ns)
-set("n", "<C-g>", ":Telescope live_grep<CR>", ns)
-set("n", "<C-b>", ":Telescope buffers<CR>", ns)
-set("n", "<C-h>", ":Telescope oldfiles<CR>", ns)
+set("n", "<Leader>p", ":Telescope find_files<CR>", ns)
+set("n", "<Leader>g", ":Telescope live_grep<CR>", ns)
+set("n", "<Leader>b", ":Telescope buffers<CR>", ns)
+set("n", "<Leader>h", ":Telescope oldfiles<CR>", ns)
 
 -- Commentary
 set("n", "<Leader>cc", ":Commentary<CR>", ns)
 set("v", "<Leader>cc", ":Commentary<CR>", ns)
 
 -- Pretier
-set("n", "<Leader>f", ":ALEFix prettier<CR>", ns)
+set("n", "<Leader>F", ":ALEFix prettier<CR>", ns)
 
 
 -- Dashboard
-set("n", "<Leader>n", ":DashboardNewFile<CR>", ns)
-set("n", "<Leader>ss", ":<C-u>SessionSave<CR>", ns)
-set("n", "<C-j>", ":<C-u>SessionLoad<CR>", ns)
+set("n", "<Leader>N", ":DashboardNewFile<CR>", ns)
+set("n", "<Leader>S", ":<C-u>SessionSave<CR>", ns)
+set("n", "<Leader>L", ":<C-u>SessionLoad<CR>", ns)
 
 -- Terminal
 
@@ -121,9 +125,10 @@ set('', '<C-w>m', ':MaximizerToggle!<CR>', ns)
 set('', '<C-m>', ':MaximizerToggle!<CR>', ns)
 
 -- kassio/neoterm
-set('n', '<c-y>', ':Ttoggle<CR>', ns)
-set('i', '<c-y>', '<Esc>:Ttoggle<CR>', ns)
-set('t', '<c-y>', '<c-\\><c-n>:Ttoggle<CR>', ns)
--- open current on terminal
--- set('n', '<leader>x', ':TREPLSendLine<CR>', ns)
--- set('v', '<leader>x', ':TREPLSendSelection<CR>', ns)
+-- set('n', '<c-y>', ':Ttoggle<CR>', ns)
+-- set('i', '<c-y>', '<Esc>:Ttoggle<CR>', ns)
+-- set('t', '<c-y>', '<c-\\><c-n>:Ttoggle<CR>', ns)
+
+-- -- open current on terminal
+-- -- set('n', '<leader>x', ':TREPLSendLine<CR>', ns)
+-- -- set('v', '<leader>x', ':TREPLSendSelection<CR>', ns)

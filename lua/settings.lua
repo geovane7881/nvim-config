@@ -20,34 +20,39 @@ opt.termguicolors = true
 
 -- Catppuccin
 -- default
-vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
--- vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
--- vim.cmd [[colorscheme catppuccin]]
+-- vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
+vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+vim.cmd [[colorscheme catppuccin]]
 
 -- Dracula
 -- cmd [[colorscheme dracula]]
 
 -- VsCode
 -- For dark theme
--- g.vscode_style = "dark"
+g.vscode_style = "dark"
 -- For light theme
 cmd [[colorscheme vscode]]
 -- g.vscode_style = "light"
 
 -- PaperColor
 -- cmd [[colorscheme PaperColor]]
+
 -- Fixes 
 -- cmd [[
 -- set background=dark
 -- set t_Co=256   " This is may or may not needed.
+-- hi Normal guibg=NONE ctermbg=NONE
 
 -- let g:PaperColor_Theme_Options = {
 --   \   'theme': {
---   \     'default.dark': {
---   \ 	  'transparent_background': 1
---   \     }                  
+--   \     'default': {
+--   \       'transparent_background': 1
+--   \     }
 --   \   }
 --   \ }
+
+-- ]]
+
 --  colorscheme PaperColor
 -- " highlight de cursor
 -- :hi Comment	ctermfg=Cyan guifg=#80a0ff gui=bold
@@ -114,19 +119,19 @@ opt.relativenumber = true
 -- ]]
 
 
-cmd [[
-if has('nvim')
-   au! TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
-endif]]
+-- cmd [[
+-- if has('nvim')
+--    au! TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
+-- endif]]
 
 -- Fix ident for comments
-cmd [[
-  set nosmartindent
-  filetype plugin indent on
-  set cindent
-  set cinkeys=0{,0},!^F,o,O,e " default is: 0{,0},0),:,0#,!^F,o,O,e
-  autocmd FileType * set cindent "some file types override it
-]]
+-- cmd [[
+--   set nosmartindent
+--   filetype plugin indent on
+--   set cindent
+--   set cinkeys=0{,0},!^F,o,O,e " default is: 0{,0},0),:,0#,!^F,o,O,e
+--   autocmd FileType * set cindent "some file types override it
+-- ]]
 
 -- Json editing fixes
 cmd [[
@@ -149,11 +154,11 @@ opt.undoreload=10000
 opt.writebackup=true
 opt.backupcopy="yes"
 
-cmd [[
-  au BufWritePre * let &bex = '@' . strftime("%F.%H:%M")
-]]
+-- cmd [[
+--   au BufWritePre * let &bex = '@' . strftime("%F.%H:%M")
+-- ]]
 
-
+opt.timeoutlen = 500
 
 -- Neoterm
 g.neoterm_default_mod = 'rightbelow'
@@ -175,16 +180,16 @@ g.closetag_close_shortcut = '<leader>>'
 -- Formatter
 
 -- Autoformat
-cmd [[ 
-  let g:ale_fixers = {
-  \   'javascript': ['prettier'],
-  \   'css': ['prettier'],
-  \}
+-- cmd [[ 
+--   let g:ale_fixers = {
+--   \   'javascript': ['prettier'],
+--   \   'css': ['prettier'],
+--   \}
 
-  let g:ale_linters_explicit = 1
-  let g:ale_fix_on_save = 0
-  let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all'
-]]
+--   let g:ale_linters_explicit = 1
+--   let g:ale_fix_on_save = 0
+--   let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all'
+-- ]]
 
 -- statusline
 -- cmd [[ 
@@ -242,6 +247,7 @@ vim.diagnostic.config({
   float = { source = "always", border = border },
   virtual_text = false,
   signs = true,
+  -- signs = false,
 })
 
 ---------------------------------

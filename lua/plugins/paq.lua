@@ -4,16 +4,17 @@ require('paq') {
   -- performace on startup
   'lewis6991/impatient.nvim';
 
+  -- Tmux
+  'christoomey/vim-tmux-navigator'; -- tmux & split window navigation
+
   -- Telescope
   'nvim-telescope/telescope.nvim';
   'nvim-telescope/telescope-fzf-native.nvim';
 
   -- Visual
-  'p00f/nvim-ts-rainbow';
+  -- 'p00f/nvim-ts-rainbow';
   'glepnir/dashboard-nvim';
   'dracula/vim';
-  'TaDaa/vimade';
-  -- 'famiu/feline.nvim';
   'nvim-lualine/lualine.nvim';
   'akinsho/bufferline.nvim';
   'Yggdroot/indentLine';
@@ -35,7 +36,8 @@ require('paq') {
   'neovim/nvim-lspconfig';
   'jose-elias-alvarez/null-ls.nvim';
   'jose-elias-alvarez/nvim-lsp-ts-utils';
-  'williamboman/nvim-lsp-installer';
+  -- 'williamboman/nvim-lsp-installer';
+  'williamboman/mason.nvim';
   'MunifTanjim/eslint.nvim';
   'hrsh7th/nvim-cmp';
   'hrsh7th/cmp-nvim-lsp';
